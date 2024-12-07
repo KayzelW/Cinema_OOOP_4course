@@ -1,0 +1,57 @@
+﻿<Window x:Class="Cinema_OOOP_4course.Excel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema_OOOP_4course.Excel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="CanMinimize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+
+        <!-- DataGrid для кинотеатров -->
+        <DataGrid Grid.Row="0" Grid.Column="0" Name="CinemaGrid" AutoGenerateColumns="False"
+                  SelectionChanged="CinemaGrid_SelectionChanged" Margin="5" Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cinema ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Rooms Count" Binding="{Binding Rooms.Count}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- DataGrid для комнат -->
+        <DataGrid Name="RoomGrid" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="1" Margin="5"
+                  Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Room ID" Binding="{Binding Path=Id}" />
+                <DataGridTextColumn Header="Category" Binding="{Binding Path=Key}" />
+                <DataGridTextColumn Header="Places" Binding="{Binding Path=Value}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    HorizontalAlignment="Center" Margin="10">
+            <Button Name="AddCinemaBtn" Content="Add Cinema"
+                    Click="AddCinema_Click" Visibility="Collapsed" />
+            <!-- <Button Name="EditCinemaBtn" Content="Edit Cinema" -->
+            <!--         Click="EditCinema_Click" Visibility="Collapsed" /> -->
+            <Button Name="ExportToExcelBtn" Content="Export to Excel"
+                    Click="ExportToExcel_Click" Visibility="Collapsed" />
+            <Button Name="AddRoomBtn" Content="Add Room"
+                    Click="AddRoom_Click" Visibility="Collapsed" />
+            <Button Name="DeleteRoomBtn" Content="Delete Room"
+                    Click="DeleteRoom_Click" Visibility="Collapsed" />
+            <Button Name="LoadExcelBtn" Content="Загрузить Excel"
+                    Click="LoadFromExcel_Click" />
+        </StackPanel>
+
+
+    </Grid>
+</Window>
